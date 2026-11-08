@@ -10,6 +10,7 @@ import { createTodoRoutes } from './routes/todo.routes';
 import { createHealthRoutes } from './routes/health.routes';
 import { errorHandler } from './middleware/error.middleware';
 import { createUserRoutes } from './routes/user.routes';
+import { createBedroomRoutes } from './routes/bedroom.routes';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(express.json());
 
 app.use('/api', createTodoRoutes());
 app.use('/api', createUserRoutes());
+app.use('/api', createBedroomRoutes());
 app.use('/', createHealthRoutes());
 
 
