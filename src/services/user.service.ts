@@ -1,7 +1,7 @@
 import { between } from 'drizzle-orm';
 import { UserRepository } from '../repositories/user.repository';
 import { PasswordHasher } from '../utils/passwordHasher.utils';
-import { LoginUserRequest, RegisterUserRequest, UserResponse } from '../types/user.type';
+import { LoginUserRequest, RegisterUserRequest, UserResponse } from '../types/user.types';
 import { v4 as uuidv4 } from 'uuid';
 
 const userRepository = new UserRepository();

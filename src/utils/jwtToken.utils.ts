@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { UserResponse } from "../types/user.type";
+import { UserResponse } from "../types/user.types";
 
 export class JwtToken {
     generateToken = async (user: UserResponse) => {

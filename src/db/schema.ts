@@ -1,5 +1,5 @@
 import { ForeignKey } from 'drizzle-orm/gel-core';
-import { mysqlTable, varchar, boolean, timestamp } from 'drizzle-orm/mysql-core';
+import { mysqlTable, varchar, boolean, int, decimal, timestamp } from 'drizzle-orm/mysql-core';
 
 // On défini le schéma ici. C'est ce qui sera utilisé pour créer la table dans la base de données.
 // On utilise les types de Drizzle pour définir les colonnes de la table.
@@ -31,3 +31,26 @@ export const users = mysqlTable('users', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull()  
 });
+
+//Table des types de lits 
+export const bedTypes = mysqlTable('bed_types', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  description: varchar('description', { length: 100 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull()
+});
+
+export const bedrooms = mysqlTable('bedrooms', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  bedroomNumber: int('bedroomNumber').notNull().unique(),
+  bedroomType: varchar('bedroomType', {length: 50}).notNull(),
+  description: varchar('description', {length: 200}).notNull(),
+  nbMaxClients: int('nbMaxClients').notNull(),
+  sizeInMeterSquare: decimal('sizeInMeterSquare').notNull(),
+  bed1: varchar('bed1', { length: 36 }).notNull().references(() => bedTypes.id),
+  bed2: varchar('bed2', { length: 36 }).references(() => bedTypes.id),
+  price: decimal('price').notNull(),
+  hotelName: varchar('hotelName', {length: 100}).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull()
+})

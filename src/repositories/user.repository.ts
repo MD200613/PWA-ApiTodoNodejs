@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import { users, userRoles } from '../db/schema';
-import { User, UserResponse } from '../types/user.type';
+import { User, UserResponse } from '../types/user.types';
 import { db } from '../db/connection';
 
 export class UserRepository {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction, response } from 'express';
 import { UserService } from '../services/user.service';
 import { JwtToken } from '../utils/jwtToken.utils';
-import { LoginUserRequest, RegisterUserRequest } from '../types/user.type';
+import { LoginUserRequest, RegisterUserRequest } from '../types/user.types';
 
 const userService = new UserService();
 const jwtToken = new JwtToken();
