@@ -1,6 +1,6 @@
 import { between } from 'drizzle-orm';
 import { UserRepository } from '../repositories/user.repository';
-import { PasswordHasher } from '../services/passwordHasher.services';
+import { PasswordHasher } from '../utils/passwordHasher.utils';
 import { LoginUserRequest, RegisterUserRequest, UserResponse } from '../types/user.type';
 import { v4 as uuidv4 } from 'uuid';
 

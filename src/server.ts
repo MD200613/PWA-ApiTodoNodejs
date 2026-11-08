@@ -24,10 +24,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
-
 app.use('/api', createTodoRoutes());
 app.use('/api', createUserRoutes());
 app.use('/', createHealthRoutes());
+
 
 
 // if (process.env.NODE_ENV === 'development') {

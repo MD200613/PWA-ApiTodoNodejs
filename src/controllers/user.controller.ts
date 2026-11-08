@@ -1,8 +1,10 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, response } from 'express';
 import { UserService } from '../services/user.service';
+import { JwtToken } from '../utils/jwtToken.utils';
 import { LoginUserRequest, RegisterUserRequest } from '../types/user.type';
 
 const userService = new UserService();
+const jwtToken = new JwtToken();
 
 export class UserController {
     registerUser = async (req: Request, res: Response, next : NextFunction): Promise<void> => {
@@ -26,7 +28,20 @@ export class UserController {
 
         try {
             const user = await userService.connectUser(userRequest);
-            res.status(200).json(user);
+
+            if(user) {
+                const token = await jwtToken.generateToken(user);
+                res.cookie("jwt", token, {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "none",
+                    path: "/",
+                    maxAge: 1000 * 60 *60
+                })
+                res.status(200).json();
+                return;
+            }
+            res.status(400).json("Erreur lors de la connexion");
         } catch (error) {
             next(error);
         }
