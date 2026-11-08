@@ -9,6 +9,7 @@ import path from 'path';
 import { createTodoRoutes } from './routes/todo.routes';
 import { createHealthRoutes } from './routes/health.routes';
 import { errorHandler } from './middleware/error.middleware';
+import { createUserRoutes } from './routes/user.routes';
 
 dotenv.config();
 
@@ -25,10 +26,12 @@ app.use(express.json());
 
 
 app.use('/api', createTodoRoutes());
+app.use('/api', createUserRoutes());
 app.use('/', createHealthRoutes());
 
+
 // if (process.env.NODE_ENV === 'development') {
-//   const swaggerDocument = yaml.load(path.join(__dirname, '../swagger.yml'));
+//   const swaggerDocument = yaml.load(path.join('../src', '../swagger.yml'));
 //   app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // }
 
