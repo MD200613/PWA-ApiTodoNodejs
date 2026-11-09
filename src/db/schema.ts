@@ -23,8 +23,8 @@ export const userRoles = mysqlTable('user_roles', {
 //Table des utilisateurs
 export const users = mysqlTable('users', {
   id: varchar('id', { length: 36 }).primaryKey(),
-  name: varchar('name', { length: 100 }).notNull(),
-  surname: varchar('surname', { length: 100 }).notNull(),
+  firstName: varchar('firstName', { length: 100 }).notNull(),
+  lastName: varchar('lastName', { length: 100 }).notNull(),
   email: varchar('email', { length: 100 }).notNull().unique(),
   password: varchar('password', { length: 200 }).notNull(),
   roleId: varchar('roleId', { length: 36 }).notNull().references(() => userRoles.id),
@@ -46,10 +46,10 @@ export const bedrooms = mysqlTable('bedrooms', {
   bedroomType: varchar('bedroomType', {length: 50}).notNull(),
   description: varchar('description', {length: 200}).notNull(),
   nbMaxClients: int('nbMaxClients').notNull(),
-  sizeInMeterSquare: decimal('sizeInMeterSquare').notNull(),
+  sizeInMeterSquare: decimal('sizeInMeterSquare', {precision: 10, scale: 2, mode: "number"}).notNull(),
   bed1: varchar('bed1', { length: 36 }).notNull().references(() => bedTypes.id),
   bed2: varchar('bed2', { length: 36 }).references(() => bedTypes.id),
-  price: decimal('price').notNull(),
+  price: decimal('price', {precision: 10, scale: 2, mode: "number"}).notNull(),
   hotelName: varchar('hotelName', {length: 100}).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull()

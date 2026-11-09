@@ -43,6 +43,13 @@
       "when": 1794169691450,
       "tag": "0005_tranquil_moira_mactaggert",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1794238261120,
+      "tag": "0006_friendly_menace",
+      "breakpoints": true
     }
   ]
 }

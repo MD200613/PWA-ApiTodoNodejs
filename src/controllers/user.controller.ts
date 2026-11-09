@@ -36,7 +36,7 @@ export class UserController {
                     secure: true,
                     sameSite: "none",
                     path: "/",
-                    maxAge: 1000 * 60 *60
+                    maxAge: 1000 * 60 * 60
                 })
                 res.status(200).json();
                 return;
