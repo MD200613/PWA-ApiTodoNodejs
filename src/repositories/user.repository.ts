@@ -36,6 +36,7 @@ export class UserRepository {
             name: row.name,
             surname: row.surname,
             email: row.email,
+            role: row.roleId,
             createdAt: row.createdAt,
             updatedAt: row.updatedAt
         };

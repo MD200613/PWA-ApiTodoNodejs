@@ -8,6 +8,7 @@ export class JwtToken {
             email: user.email,
             name: user.name,
             surname: user.surname,
+            role: user.role
         };
         const secret = process.env.JWT_SECRET || "une cle secrete";
         const options = {
