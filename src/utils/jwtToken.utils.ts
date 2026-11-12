@@ -3,7 +3,6 @@ import { UserResponse } from "../types/user.types";
 
 export class JwtToken {
     generateToken = async (user: UserResponse) => {
-        // need 3 things to create a token: payload, secret, & options
         const payload = {
             id: user.id,
             email: user.email,
