@@ -46,4 +46,9 @@ export class UserController {
             next(error);
         }
     }
+
+    logout = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        res.clearCookie("jwt");
+        res.status(200).json("Déconnexion réussie");
+    }
 }
