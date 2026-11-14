@@ -50,6 +50,13 @@
       "when": 1794238261120,
       "tag": "0006_friendly_menace",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1794668112849,
+      "tag": "0007_red_sleepwalker",
+      "breakpoints": true
     }
   ]
 }
