@@ -30,14 +30,6 @@ app.use('/api/user', createUserRoutes());
 app.use('/api/bedroom', createBedroomRoutes());
 app.use('/', createHealthRoutes());
 
-
-
-// if (process.env.NODE_ENV === 'development') {
-//   const swaggerDocument = yaml.load(path.join('../src', '../swagger.yml'));
-//   app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-// }
-
-
 app.get('/ping',  (req, res) => {
   res.json({ message: 'pong', timestamp: new Date().toISOString() });
 });
