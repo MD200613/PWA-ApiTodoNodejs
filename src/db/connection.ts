@@ -23,9 +23,9 @@ export const testConnection = async (): Promise<{ success: boolean; error?: stri
   try {
     // Run a simple query to ensure everything is working
     await connection.query('SELECT 1');
-    const [databases] = await connection.query('SHOW DATABASES LIKE ?', ['todo_api']);
+    const [databases] = await connection.query('SHOW DATABASES LIKE ?', ['hotelapi']);
     if (Array.isArray(databases) && databases.length === 0) {
-      throw new Error('Database todo_api does not exist');
+      throw new Error('Database hotelapi does not exist');
     }
     // Todos table existence check
     const [tables] = await connection.query('SHOW TABLES LIKE ?', ['todos']);
