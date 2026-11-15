@@ -37,7 +37,8 @@ app.use('/', createHealthRoutes());
 //   app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // }
 
-app.get('/ping', (req, res) => {
+
+app.get('/ping',  (req, res) => {
   res.json({ message: 'pong', timestamp: new Date().toISOString() });
 });
 
