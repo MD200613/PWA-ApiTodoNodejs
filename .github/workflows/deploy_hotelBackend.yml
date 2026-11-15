@@ -24,9 +24,8 @@ jobs:
             - name: Compilation du TypeScript
               run: npm run build
 
-            # Démarrage des test (à faire plus tard)
-            # - name: Exécuter les tests
-            #   run: npm test
+            - name: Démarrage des tests
+              run: npm test
 
             - name: Envoie des fichiers vers le Droplet
               uses: appleboy/scp-action@v0.1.7

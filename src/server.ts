@@ -14,7 +14,7 @@ import { createBedroomRoutes } from './routes/bedroom.routes';
 
 dotenv.config();
 
-const app = express();
+export const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(helmet());
@@ -26,8 +26,8 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api', createTodoRoutes());
-app.use('/api', createUserRoutes());
-app.use('/api', createBedroomRoutes());
+app.use('/api/user', createUserRoutes());
+app.use('/api/bedroom', createBedroomRoutes());
 app.use('/', createHealthRoutes());
 
 
