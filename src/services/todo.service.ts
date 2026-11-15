@@ -60,9 +60,5 @@ export class TodoService {
     await todoRepository.delete(id);
     return todoToUpdate;
   }
-
-
-  // Les autres actions du service (update, delete, etc.) peuvent être ajoutées ici
-  
 }
 

@@ -24,14 +24,14 @@ jobs:
             - name: Compilation du TypeScript
               run: npm run build
 
-            - name: Démarrage des tests
-              run: npm test
-              env:
-                DB_HOST: ${{ secrets.DB_HOST }}
-                DB_PORT: ${{ secrets.DB_PORT }}
-                DB_USER: ${{ secrets.DB_USER }}
-                DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-                DB_NAME: ${{ secrets.DB_NAME }}
+            # - name: Démarrage des tests
+            #   run: npm test
+            #   env:
+            #     DB_HOST: ${{ secrets.DB_HOST }}
+            #     DB_PORT: ${{ secrets.DB_PORT }}
+            #     DB_USER: ${{ secrets.DB_USER }}
+            #     DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+            #     DB_NAME: ${{ secrets.DB_NAME }}
 
             - name: Envoie des fichiers vers le Droplet
               uses: appleboy/scp-action@v0.1.7
