@@ -12,6 +12,11 @@ import { app } from '../server'; // super test démarre le serveur pour nous par
 //     assert.equal(response.body.error, 'email ou  mot de passe incorrect');
 //   });
 // });
+
+
+
+
+//test
 describe('GET /health', () => {
   it('retourne 200', async () => {
     const response = await request(app)
