@@ -10,10 +10,10 @@ jobs:
 
         steps:
             - name: Récupération du code source
-              uses: action/checkout@v4
+              uses: actions/checkout@v4
             
             - name: Configuration de Node.js
-              uses: action/setup-node@v4
+              uses: actions/setup-node@v4
               with:
                 node-version: '22'
                 cache: 'npm'
