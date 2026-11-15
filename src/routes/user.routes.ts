@@ -7,7 +7,7 @@ export const createUserRoutes = () : Router => {
     const router = Router();
 
     router.post('/register', userController.registerUser);
-    router.get('/login', userController.connectUser);
+    router.post('/login', userController.connectUser);
     router.post('/logout', userController.logout);
     return router;
 }
