@@ -6,7 +6,7 @@ import { app } from '../server'; // super test démarre le serveur pour nous par
 describe('GET /api/user/login', () => {
   it('retourne 400 si une mauvaise combinaison email password est faite', async () => {
     const response = await request(app)
-      .patch('/api/user/login')
+      .get('/api/user/login')
       .send({ email: 'test.test@test.com', password: 'ZXC987qwe$$$' })
       .expect(400);
 
