@@ -33,8 +33,8 @@ export class UserRepository {
     private mapToUser(row: any): UserResponse {
         return {
             id: row.id,
-            name: row.name,
-            surname: row.surname,
+            firstName: row.firstName,
+            lastName: row.lastName,
             email: row.email,
             role: row.roleId,
             createdAt: row.createdAt,

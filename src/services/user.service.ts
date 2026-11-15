@@ -13,9 +13,9 @@ export class UserService {
 
         if(await userRepository.findByEmail(data.email))
             throw new BadRequest("Un utilisateur avec ce email existe déjà");
-        if(data.name.length < 1 || data.name.length > 100)
+        if(data.firstName.length < 1 || data.firstName.length > 100)
             throw new BadRequest("Le prénom de l'utilisateur doit contenir entre 1 et 100 caractères");
-        if(data.surname.length < 1 || data.surname.length > 100)
+        if(data.lastName.length < 1 || data.lastName.length > 100)
             throw new BadRequest("Le nom de l'utilisateur doit contenir entre 1 et 100 caractères");
         if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email) || data.email.length > 100)
             throw new BadRequest("Le mail de l'utilisateur est invalide. Il doit contenir un maximum de 100 caractères");
@@ -27,8 +27,8 @@ export class UserService {
         const now = new Date();
         const user = {
             id: uuidv4(),
-            name: data.name,
-            surname: data.surname,
+            firstName: data.firstName,
+            lastName: data.lastName,
             email: data.email,
             password: await passwordHasher.HashPassword(data.password),
             roleId: await userRepository.findRoleByDescription("customer"),

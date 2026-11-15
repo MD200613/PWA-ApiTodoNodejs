@@ -52,7 +52,7 @@ export class TodoService {
     return todoToUpdate;
   }
 
-  async deleteTodo(id: string) {
+  async deleteTodo(id: string ) {
     const todoToUpdate = await this.getTodoById(id);
     if (!todoToUpdate) {
       return null;

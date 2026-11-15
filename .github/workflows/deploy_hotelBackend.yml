@@ -1,0 +1,56 @@
+name: Deploy Hotel Node.Js Api
+
+on:
+    push:
+        branches: [etu]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Récupération du code source
+              uses: action/checkout@v4
+            
+            - name: Configuration de Node.js
+              uses: action/setup-node@v4
+              with:
+                node-version: '22'
+                cache: 'npm'
+                
+            - name: Installation des dépendances
+              run: npm ci
+            
+            - name: Compilation du TypeScript
+              run: npm run build
+
+            # Démarrage des test (à faire plus tard)
+            # - name: Exécuter les tests
+            #   run: npm test
+
+            - name: Envoie des fichiers vers le Droplet
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                host: ${{ secrets.SERVER_HOST }}
+                username: ${{ secrets.SERVER_USER }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                source: "dist,package.json,package-lock.json,drizzle,drizzle.config.ts"
+                target: "/var/www/hotelapi"
+            
+            - name: Installation des dépendances, migration Drizzle et Redémarrage de PM2
+              uses: appleboy/ssh-action@v1.0.3
+              with:
+                host: ${{ secrets.SERVER_HOST }}
+                username: ${{ secrets.SERVER_USER }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                script: |
+                  cd /var/www/hotelapi
+                  npm ci
+                  npx drizzle-kit migrate
+                  pm2 restart hotel-api || pm2 start dist/server.js --name "hotel-api"
+                  pm2 save
+
+            
+
+
+            

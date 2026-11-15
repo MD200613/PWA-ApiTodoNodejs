@@ -6,8 +6,8 @@ export class JwtToken {
         const payload = {
             id: user.id,
             email: user.email,
-            name: user.name,
-            surname: user.surname,
+            firstName: user.firstName,
+            lastName: user.lastName,
             role: user.role
         };
         const secret = process.env.JWT_SECRET || "une cle secrete";
