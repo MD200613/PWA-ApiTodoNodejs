@@ -20,11 +20,8 @@ export class BedRommController {
     
     try {
       const bedroom = await bedroomService.createBedroom(bedroomRequest);
-      if(bedroom == null) {
-                res.status(400).json("Une compte de ce numéro existe déjà");
-                return;
-            }
-            res.status(201).json(bedroom);
+
+      res.status(201).json(bedroom);
     } catch (error) {
       next(error);
     }

@@ -38,7 +38,7 @@ export class UserController {
                     path: "/",
                     maxAge: 1000 * 60 * 60
                 })
-                res.status(200).json();
+                res.status(200).json(user);
                 return;
             }
             res.status(400).json("Erreur lors de la connexion");
