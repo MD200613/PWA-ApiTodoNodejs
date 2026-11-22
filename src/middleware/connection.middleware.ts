@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { Unauthorized } from "../errors/Unauthorized";
 
-const connection = (
+export const Connection = (
     req: Request,
     res: Response,
     next: NextFunction

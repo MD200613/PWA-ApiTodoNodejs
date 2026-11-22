@@ -11,6 +11,7 @@ import { createHealthRoutes } from './routes/health.routes';
 import { errorHandler } from './middleware/error.middleware';
 import { createUserRoutes } from './routes/user.routes';
 import { createBedroomRoutes } from './routes/bedroom.routes';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -23,7 +24,9 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/api', createTodoRoutes());
 app.use('/api/user', createUserRoutes());
