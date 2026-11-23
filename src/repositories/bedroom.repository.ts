@@ -3,7 +3,7 @@ import { bedrooms, bedroomTypes, bedTypes } from '../db/schema';
 import { Bedroom, BedroomResponse } from '../types/bedroom.types';
 import { db } from '../db/connection';
 import { resourceUsage } from 'node:process';
-import { BedroomType } from '../types/bedroomType';
+import { BedroomType } from '../types/bedroomType.types';
 import { BedType } from '../types/bedType.types';
 
 export class BedroomRepository {

@@ -26,4 +26,22 @@ export class BedRommController {
       next(error);
     }
   };
+
+  getAllBedroomTypes = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const bedroomTypes = await bedroomService.getAllBedroomTypes();
+      res.status(200).json(bedroomTypes);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  getAllBedTypes = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const bedTypes = await bedroomService.getAllBedTypes();
+      res.status(200).json(bedTypes);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

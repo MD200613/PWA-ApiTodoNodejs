@@ -10,7 +10,11 @@ export const createBedroomRoutes = (): Router => {
   const router = Router();
 
   router.get('/bedrooms', bedroomController.getAllBedrooms);
-  router.post('/createBedroom', bedroomController.createBedroom);
+  router.post('/createBedroom', Connection, Admin, bedroomController.createBedroom);
+
+  router.get('/bedroomTypes', bedroomController.getAllBedroomTypes);
+  
+  router.get('/bedTypes', bedroomController.getAllBedTypes);
 
   return router;
 };
