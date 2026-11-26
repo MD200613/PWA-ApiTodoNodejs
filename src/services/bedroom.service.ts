@@ -1,7 +1,7 @@
 import { BedroomRepository } from '../repositories/bedroom.repository';
 import { Bedroom, CreateBedroomRequest, BedroomResponse} from '../types/bedroom.types';
 import { v4 as uuidv4 } from 'uuid';
-import { BedroomType } from '../types/bedroomType.types';
+import { BedroomType, BedroomTypeResponse } from '../types/bedroomType.types';
 import { BedType } from '../types/bedType.types';
 
 const bedroomRepository = new BedroomRepository();
@@ -9,6 +9,10 @@ const bedroomRepository = new BedroomRepository();
 export class BedroomService {
     async getAllBedrooms(): Promise<Bedroom[]> {
         return await bedroomRepository.getAllBedrooms();
+    }
+
+    async getBedroomsByType(bedroomType: BedroomTypeResponse): Promise<Bedroom[]> {
+        return await bedroomRepository.getBedroomsByType(bedroomType);
     }
 
     async createBedroom(data: CreateBedroomRequest): Promise<BedroomResponse | null> {

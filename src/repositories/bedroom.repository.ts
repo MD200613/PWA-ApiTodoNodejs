@@ -3,7 +3,7 @@ import { bedrooms, bedroomTypes, bedTypes } from '../db/schema';
 import { Bedroom, BedroomResponse } from '../types/bedroom.types';
 import { db } from '../db/connection';
 import { resourceUsage } from 'node:process';
-import { BedroomType } from '../types/bedroomType.types';
+import { BedroomType, BedroomTypeResponse } from '../types/bedroomType.types';
 import { BedType } from '../types/bedType.types';
 
 export class BedroomRepository {
@@ -14,10 +14,27 @@ export class BedroomRepository {
     return result.length > 0 ? this.mapToBedroom(result[0]) : null;
   }
 
+  
+
   async getAllBedrooms(): Promise<Bedroom[]> {
     const bedroomList = await db.select().from(bedrooms);
 
     //À montrer au prof
+    const result = await Promise.all(
+      bedroomList.map(async x => ({
+        ...x,
+        bedroomType: await this.findBedroomTypeById(x.bedroomType),
+        bed1: await this.findBedTypeById(x.bed1),
+        bed2: await this.findBedTypeById(x.bed2)
+      }))
+    );
+
+    return result.map(this.mapToBedroom);
+  }
+
+  async getBedroomsByType(bedroomType: BedroomTypeResponse): Promise<Bedroom[]> {
+    const bedroomList = await db.select().from(bedrooms).where(eq(bedrooms.bedroomType, bedroomType.id));
+
     const result = await Promise.all(
       bedroomList.map(async x => ({
         ...x,

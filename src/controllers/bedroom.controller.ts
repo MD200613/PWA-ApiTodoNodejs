@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { BedroomService } from '../services/bedroom.service';
 import { CreateBedroomRequest } from '../types/bedroom.types';
+import { BedroomType, BedroomTypeResponse } from '../types/bedroomType.types';
 
 const bedroomService = new BedroomService();
 
@@ -9,6 +10,18 @@ export class BedRommController {
     
     try {
       const bedrooms = await bedroomService.getAllBedrooms();
+      res.status(200).json(bedrooms);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  getBedroomsByType = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    
+    const bedroomType : BedroomTypeResponse = req.body;
+
+    try {
+      const bedrooms = await bedroomService.getBedroomsByType(bedroomType);
       res.status(200).json(bedrooms);
     } catch (error) {
       next(error);
