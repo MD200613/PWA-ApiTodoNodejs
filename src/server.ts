@@ -37,6 +37,11 @@ app.get('/ping',  (req, res) => {
   res.json({ message: 'pong', timestamp: new Date().toISOString() });
 });
 
+if(process.env.NODE_ENV !== 'production') {
+  const swaggerDocument = yaml.load(path.resolve('swagger.yml'));
+  app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
+
 app.use(errorHandler);
 
 process.on('uncaughtException', (error) => {
